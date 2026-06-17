@@ -3,397 +3,352 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI年収査定 — あなたの市場価値、正直に教えます</title>
-<meta name="description" content="職種・経験・スキルを入力するだけ。AIが適正年収を査定します。転職前に必ずチェック。無料で今すぐ査定。">
+<title>AI年収査定 — あなたの市場価値を3分で算出</title>
+<meta name="description" content="職種・経験・スキルを入力するだけ。AIが適正年収レンジを算出。転職前に必ずチェック。現在の年収との乖離額も可視化。無料で今すぐ査定。">
+<meta property="og:title" content="AI年収査定 — 市場価値を3分で算出">
+<meta name="twitter:card" content="summary_large_image">
+<!-- AdSense -->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9815681802683480" crossorigin="anonymous"></script>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap');
-:root {
-  --bg:#0a0f1e; --bg2:#0f1628; --card:#141d35;
-  --green:#00c896; --yellow:#ffd447; --red:#ff4d6d;
-  --white:#f0eff8; --muted:#7a7f9a; --border:rgba(255,255,255,0.07);
-}
+:root{--bg:#080f1a;--bg2:#0d1525;--card:#111827;--green:#00c896;--yellow:#ffd447;--red:#ff4d6d;--white:#eef0f8;--muted:#7a8090;--border:rgba(255,255,255,0.07)}
 *{margin:0;padding:0;box-sizing:border-box}
 body{background:var(--bg);color:var(--white);font-family:'Noto Sans JP',sans-serif;min-height:100vh}
 
-.header{height:54px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(10,15,30,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
-.logo{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--white)}
-.logo span{color:var(--green)}
-.header-btn{background:var(--green);color:#0a0f1e;border:none;padding:8px 20px;border-radius:6px;font-size:0.82rem;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer}
+.header{height:54px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 24px;background:rgba(8,15,26,0.95);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:0.95rem;font-weight:700}
+.logo em{color:var(--green);font-style:normal}
+.header-nav a{font-size:0.8rem;color:var(--muted);text-decoration:none;margin-right:20px}
+.hbtn{background:var(--green);color:#080f1a;border:none;padding:7px 18px;border-radius:6px;font-size:0.8rem;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer}
 
-/* HERO */
-.hero{padding:72px 20px 56px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(0,200,150,0.1) 0%,transparent 60%)}
-.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.25);color:var(--green);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:24px}
-.hero h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
+.hero{min-height:92vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:60px 20px;background:radial-gradient(ellipse at 50% -10%,rgba(0,200,150,0.1) 0%,transparent 60%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,200,150,0.08);border:1px solid rgba(0,200,150,0.2);color:var(--green);font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,6vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-0.025em;margin-bottom:16px}
 .hero h1 em{color:var(--green);font-style:normal}
-.hero-sub{font-size:1rem;color:var(--muted);max-width:500px;margin:0 auto 40px;font-weight:300;line-height:1.7}
-.hero-cta{background:var(--green);color:#0a0f1e;border:none;padding:18px 48px;font-size:1.05rem;font-weight:900;font-family:'Noto Sans JP',sans-serif;border-radius:10px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s}
-.hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,200,150,0.3)}
-.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:48px;flex-wrap:wrap}
-.hero-stat{text-align:center}
-.hero-stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white);display:block}
-.hero-stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1px}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:480px;margin:0 auto 14px;font-weight:300;line-height:1.7}
+.social-proof{font-size:0.8rem;color:var(--muted);margin-bottom:36px}
+.social-proof strong{color:var(--white)}
+.hero-cta{background:var(--green);color:#080f1a;border:none;padding:17px 48px;font-size:1.05rem;font-weight:900;font-family:'Noto Sans JP',sans-serif;border-radius:10px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s;margin-bottom:10px}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 12px 36px rgba(0,200,150,0.25)}
+.hero-hint{font-size:0.75rem;color:var(--muted)}
+.trust-bar{display:flex;gap:32px;margin-top:52px;flex-wrap:wrap;justify-content:center}
+.trust-item{text-align:center}
+.trust-num{font-family:'Space Grotesk',sans-serif;font-size:1.7rem;font-weight:700;color:var(--white);display:block}
+.trust-label{font-size:0.68rem;color:var(--muted);letter-spacing:1px;margin-top:2px}
+.trust-div{width:1px;background:var(--border);align-self:stretch}
 
-/* FORM */
-.form-section{display:none;max-width:640px;margin:0 auto;padding:60px 20px}
+.form-section{display:none;max-width:640px;margin:0 auto;padding:64px 20px}
 .form-section.active{display:block}
-.form-step-indicator{display:flex;gap:8px;margin-bottom:48px;align-items:center}
-.fsi-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background 0.2s}
-.fsi-dot.active{background:var(--green);width:24px;border-radius:4px}
-.fsi-dot.done{background:rgba(0,200,150,0.4)}
-.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:16px}
-.form-q{font-size:1.2rem;font-weight:700;margin-bottom:24px;line-height:1.4}
-.form-q span{color:var(--green)}
-.select-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.sel-opt{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;transition:all 0.15s;text-align:left;color:var(--white);font-family:'Noto Sans JP',sans-serif}
-.sel-opt:hover{border-color:rgba(0,200,150,0.4)}
-.sel-opt.selected{border-color:var(--green);background:rgba(0,200,150,0.08)}
-.sel-opt-title{font-size:0.9rem;font-weight:700;margin-bottom:2px}
-.sel-opt-sub{font-size:0.75rem;color:var(--muted)}
-.text-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:var(--white);font-family:'Noto Sans JP',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.15s}
-.text-input:focus{border-color:rgba(0,200,150,0.4)}
-.text-input::placeholder{color:var(--muted)}
-.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px}
-.btn-back{background:transparent;border:1px solid var(--border);color:var(--white);padding:12px 24px;border-radius:8px;font-family:'Noto Sans JP',sans-serif;cursor:pointer}
-.btn-next{background:var(--green);color:#0a0f1e;border:none;padding:14px 32px;border-radius:8px;font-size:0.95rem;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;margin-left:auto;transition:opacity 0.15s}
-.btn-next:disabled{opacity:0.35;cursor:not-allowed}
+.step-bar{display:flex;gap:6px;margin-bottom:52px;align-items:center}
+.step-bar-dot{height:3px;flex:1;background:var(--border);border-radius:2px;transition:background 0.3s}
+.step-bar-dot.active{background:var(--green)}
+.step-bar-dot.done{background:rgba(0,200,150,0.35)}
+.fq{font-size:0.68rem;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:12px;font-family:'Space Grotesk',sans-serif}
+.fq-text{font-size:clamp(1.2rem,3vw,1.7rem);font-weight:700;line-height:1.35;margin-bottom:32px}
+.fq-text span{color:var(--green)}
+.sgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sopt{background:var(--card);border:1.5px solid var(--border);border-radius:12px;padding:16px;cursor:pointer;transition:all 0.15s;text-align:left;color:var(--white);font-family:'Noto Sans JP',sans-serif}
+.sopt:hover{border-color:rgba(0,200,150,0.4);background:rgba(0,200,150,0.04)}
+.sopt.selected{border-color:var(--green);background:rgba(0,200,150,0.07)}
+.sopt-t{font-size:0.92rem;font-weight:700;margin-bottom:2px}
+.sopt-s{font-size:0.75rem;color:var(--muted)}
+.fnav{display:flex;gap:12px;margin-top:20px}
+.fbtn-back{background:transparent;border:1px solid var(--border);color:var(--white);padding:13px 24px;border-radius:8px;font-family:'Noto Sans JP',sans-serif;cursor:pointer;font-size:0.88rem}
+.fbtn-next{background:var(--green);color:#080f1a;border:none;padding:14px 32px;border-radius:8px;font-size:0.92rem;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;margin-left:auto;transition:opacity 0.15s}
+.fbtn-next:disabled{opacity:0.3;cursor:not-allowed}
 
-/* LOADING */
-.loading-section{display:none;text-align:center;padding:100px 20px}
-.loading-section.active{display:block}
-.loading-icon{font-size:4rem;animation:pulse 1.5s ease-in-out infinite;margin-bottom:24px;display:block}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
-.loading-title{font-size:1.4rem;font-weight:700;margin-bottom:8px;color:var(--green)}
-.loading-sub{color:var(--muted);font-size:0.88rem}
-.loading-progress{width:240px;height:3px;background:var(--border);border-radius:2px;margin:20px auto 0;overflow:hidden}
-.loading-bar{height:100%;background:var(--green);width:0%;transition:width 0.5s}
+.loading-wrap{display:none;text-align:center;padding:100px 20px}
+.loading-wrap.active{display:block}
+.l-icon{font-size:4rem;animation:bounce 1.2s ease-in-out infinite;display:block;margin-bottom:24px}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+.l-title{font-size:1.2rem;font-weight:700;color:var(--green);margin-bottom:6px}
+.l-sub{font-size:0.85rem;color:var(--muted)}
+.l-progress{width:260px;height:3px;background:var(--border);border-radius:2px;margin:20px auto 0;overflow:hidden}
+.l-bar{height:100%;background:linear-gradient(to right,var(--green),#00e5a0);transition:width 0.5s}
 
-/* RESULT */
-.result-section{display:none;max-width:680px;margin:0 auto;padding:48px 20px 80px}
+.result-section{display:none;max-width:680px;margin:0 auto;padding:48px 20px 100px}
 .result-section.active{display:block}
 
-.salary-display{text-align:center;margin-bottom:40px}
-.salary-label{font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.salary-range{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,8vw,4rem);font-weight:700;color:var(--green);margin-bottom:8px}
-.salary-current{font-size:0.9rem;color:var(--muted)}
-.salary-gap{display:inline-block;margin-top:8px;padding:4px 16px;border-radius:100px;font-size:0.85rem;font-weight:700}
+.salary-hero{text-align:center;background:var(--card);border:1px solid var(--border);border-radius:20px;padding:40px 32px;margin-bottom:16px}
+.salary-eyebrow{font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+.salary-range{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.8rem,8vw,4.4rem);font-weight:700;color:var(--green);line-height:1;margin-bottom:12px}
+.salary-gap{display:inline-flex;align-items:center;gap:6px;padding:5px 16px;border-radius:100px;font-size:0.85rem;font-weight:700;margin-bottom:8px}
 .gap-up{background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.25);color:var(--green)}
 .gap-down{background:rgba(255,77,109,0.1);border:1px solid rgba(255,77,109,0.25);color:var(--red)}
+.salary-note{font-size:0.75rem;color:var(--muted)}
 
-.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
-.result-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
-.rc-label{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
-.rc-val{font-size:1rem;font-weight:700;color:var(--white);line-height:1.4}
+.metrics-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:16px}
+.mcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:18px}
+.mcard-label{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.mcard-val{font-size:1rem;font-weight:700;color:var(--white);line-height:1.4}
+.mcard-sub{font-size:0.75rem;color:var(--muted);margin-top:3px}
 
-.result-wide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:12px}
-.rw-label{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;font-weight:700}
-.rw-text{font-size:0.92rem;color:#bbb;line-height:1.75;font-weight:300}
+.wcard{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:22px;margin-bottom:12px}
+.wcard-label{font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;font-weight:700;font-family:'Space Grotesk',sans-serif}
+.wcard-text{font-size:0.92rem;color:#bbb;line-height:1.8;font-weight:300}
 
-/* PREMIUM */
-.premium-card{background:var(--card);border:1px solid rgba(255,212,71,0.2);border-radius:16px;padding:28px;margin-bottom:16px;position:relative;overflow:hidden}
-.premium-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--yellow),#ff8c42)}
-.premium-blur{filter:blur(4px);user-select:none;font-size:0.88rem;color:#aaa;line-height:1.7;margin-bottom:20px}
-.premium-overlay{text-align:center}
-.premium-badge-pill{display:inline-block;background:linear-gradient(135deg,var(--yellow),#ff8c42);color:#0a0f1e;font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:12px}
-.premium-title{font-size:1.2rem;font-weight:700;margin-bottom:6px}
-.premium-desc{font-size:0.85rem;color:var(--muted);margin-bottom:16px;line-height:1.6}
-.premium-price-display{font-size:1.8rem;font-weight:900;color:var(--yellow);margin-bottom:16px}
-.premium-price-display span{font-size:0.9rem;font-weight:400;color:var(--muted)}
-.premium-list{list-style:none;margin-bottom:20px;text-align:left}
-.premium-list li{font-size:0.82rem;color:#ccc;padding:4px 0;display:flex;align-items:center;gap:8px}
-.premium-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
-.buy-btn{width:100%;background:linear-gradient(135deg,var(--yellow),#ff8c42);color:#0a0f1e;border:none;padding:14px;font-size:0.95rem;font-weight:900;font-family:'Noto Sans JP',sans-serif;border-radius:8px;cursor:pointer}
+.skill-grid{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.skill-tag{background:rgba(0,200,150,0.07);border:1px solid rgba(0,200,150,0.15);border-radius:6px;padding:5px 12px;font-size:0.8rem;color:var(--green)}
 
-.share-btn{width:100%;background:transparent;border:1px solid var(--border);color:var(--white);padding:13px;font-family:'Noto Sans JP',sans-serif;border-radius:8px;cursor:pointer;margin-bottom:12px;font-size:0.88rem}
-.retry-link{text-align:center;color:var(--muted);font-size:0.82rem;cursor:pointer;text-decoration:underline;display:block;margin-top:16px}
+.premium-card{background:var(--card);border:1px solid rgba(255,212,71,0.2);border-radius:16px;padding:0;margin-bottom:14px;position:relative;overflow:hidden}
+.premium-top{padding:24px 24px 0}
+.premium-top::before{content:'';display:block;position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--yellow),#ff8c42)}
+.premium-blurred{filter:blur(5px);user-select:none;font-size:0.88rem;color:#aaa;line-height:1.8;padding:0 24px;pointer-events:none}
+.premium-cta{padding:24px;text-align:center;background:rgba(0,0,0,0.3)}
+.p-badge{display:inline-block;background:linear-gradient(135deg,var(--yellow),#ff8c42);color:#080f1a;font-size:0.65rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:10px}
+.p-title{font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.p-desc{font-size:0.82rem;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.p-price{font-size:1.8rem;font-weight:900;color:var(--yellow);margin-bottom:14px}
+.p-price span{font-size:0.85rem;font-weight:400;color:var(--muted)}
+.p-list{list-style:none;margin-bottom:18px;text-align:left;display:inline-block}
+.p-list li{font-size:0.8rem;color:#ccc;padding:3px 0;display:flex;align-items:center;gap:8px}
+.p-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.pbuy{width:100%;background:linear-gradient(135deg,var(--yellow),#ff8c42);color:#080f1a;border:none;padding:14px;font-size:0.95rem;font-weight:900;font-family:'Noto Sans JP',sans-serif;border-radius:8px;cursor:pointer}
 
-@media(max-width:480px){.select-grid{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr}.hero-stats{gap:24px}}
+.action-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.abtn{flex:1;background:transparent;border:1px solid var(--border);color:var(--white);padding:13px;font-family:'Noto Sans JP',sans-serif;border-radius:8px;cursor:pointer;font-size:0.85rem;min-width:140px}
+.retry-link{text-align:center;color:var(--muted);font-size:0.85rem;cursor:pointer;text-decoration:underline;display:block;margin-top:28px}
+@media(max-width:480px){.sgrid{grid-template-columns:1fr}.metrics-grid{grid-template-columns:1fr}.trust-div{display:none}.action-row{flex-direction:column}}
 </style>
 </head>
 <body>
-
 <header class="header">
-  <div class="logo">Salary<span>AI</span></div>
-  <button class="header-btn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">今すぐ査定する</button>
+  <div class="logo">Salary<em>AI</em></div>
+  <div>
+    <a href="/blog.html" class="header-nav">記事</a>
+    <button class="hbtn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">今すぐ査定</button>
+  </div>
 </header>
 
-<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-badge">💰 AI年収査定</div>
   <h1>あなたの市場価値、<br><em>正直に</em>教えます。</h1>
-  <p class="hero-sub">職種・経験・スキルを入力するだけ。AIが適正年収レンジを算出。転職前に必ずチェック。</p>
+  <p class="hero-sub">職種・経験・スキルを入力するだけ。AIが業界データと照合して適正年収を算出します。</p>
+  <div class="social-proof"><strong>転職で平均+87万円</strong>アップした人が実践した市場価値チェック</div>
   <button class="hero-cta" onclick="startForm()">無料で年収査定する →</button>
-  <div class="hero-stats">
-    <div class="hero-stat"><span class="hero-stat-num">3分</span><div class="hero-stat-label">査定時間</div></div>
-    <div class="hero-stat"><span class="hero-stat-num">無料</span><div class="hero-stat-label">基本査定</div></div>
-    <div class="hero-stat"><span class="hero-stat-num">±10万</span><div class="hero-stat-label">精度目安</div></div>
+  <div class="hero-hint">所要時間：約3分 ・ 完全無料</div>
+  <div class="trust-bar">
+    <div class="trust-item"><span class="trust-num">3分</span><div class="trust-label">査定時間</div></div>
+    <div class="trust-div"></div>
+    <div class="trust-item"><span class="trust-num">±10万</span><div class="trust-label">精度目安</div></div>
+    <div class="trust-div"></div>
+    <div class="trust-item"><span class="trust-num">無料</span><div class="trust-label">基本査定</div></div>
   </div>
 </section>
 
-<!-- FORM -->
+<!-- AdSense -->
+<div style="max-width:728px;margin:0 auto;padding:0 16px">
+  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9815681802683480" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+</div>
+
 <div class="form-section" id="form">
-  <div class="form-step-indicator">
-    <div class="fsi-dot active" id="dot0"></div>
-    <div class="fsi-dot" id="dot1"></div>
-    <div class="fsi-dot" id="dot2"></div>
-    <div class="fsi-dot" id="dot3"></div>
-    <div class="fsi-dot" id="dot4"></div>
-  </div>
+  <div class="step-bar" id="step-bar"></div>
   <div id="form-body"></div>
 </div>
 
-<!-- LOADING -->
-<div class="loading-section" id="loading">
-  <span class="loading-icon">💹</span>
-  <div class="loading-title">市場価値を算出中...</div>
-  <div class="loading-sub" id="l-msg">業界データと照合しています</div>
-  <div class="loading-progress"><div class="loading-bar" id="l-bar"></div></div>
+<div class="loading-wrap" id="loading">
+  <span class="l-icon">💹</span>
+  <div class="l-title">市場価値を算出中...</div>
+  <div class="l-sub" id="l-msg">業界データと照合しています</div>
+  <div class="l-progress"><div class="l-bar" id="l-bar" style="width:0%"></div></div>
 </div>
 
-<!-- RESULT -->
 <div class="result-section" id="result">
-  <div class="salary-display">
-    <div class="salary-label">AIが算出したあなたの適正年収</div>
+  <!-- AdSense in result -->
+  <div style="margin-bottom:20px">
+    <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9815681802683480" data-ad-slot="auto" data-ad-format="auto" data-full-width-responsive="true"></ins>
+    <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  </div>
+
+  <div class="salary-hero">
+    <div class="salary-eyebrow">AIが算出したあなたの適正年収</div>
     <div class="salary-range" id="r-range">—</div>
-    <div class="salary-current" id="r-current"></div>
-    <span class="salary-gap" id="r-gap"></span>
+    <div><span class="salary-gap" id="r-gap"></span></div>
+    <div class="salary-note" id="r-note" style="margin-top:8px"></div>
   </div>
 
-  <div class="result-grid">
-    <div class="result-card"><div class="rc-label">業界水準</div><div class="rc-val" id="r-industry">—</div></div>
-    <div class="result-card"><div class="rc-label">あなたの強み</div><div class="rc-val" id="r-strength">—</div></div>
-    <div class="result-card"><div class="rc-label">3年後の予測</div><div class="rc-val" id="r-future">—</div></div>
-    <div class="result-card"><div class="rc-label">転職タイミング</div><div class="rc-val" id="r-timing">—</div></div>
+  <div class="metrics-grid">
+    <div class="mcard"><div class="mcard-label">業界水準</div><div class="mcard-val" id="r-industry">—</div></div>
+    <div class="mcard"><div class="mcard-label">主な強み</div><div class="mcard-val" id="r-strength">—</div></div>
+    <div class="mcard"><div class="mcard-label">3年後の予測</div><div class="mcard-val" id="r-future">—</div></div>
+    <div class="mcard"><div class="mcard-label">転職タイミング</div><div class="mcard-val" id="r-timing">—</div></div>
   </div>
 
-  <div class="result-wide"><div class="rw-label">査定コメント</div><div class="rw-text" id="r-comment"></div></div>
-  <div class="result-wide"><div class="rw-label">年収アップのヒント（無料）</div><div class="rw-text" id="r-tips"></div></div>
+  <div class="wcard"><div class="wcard-label">査定コメント</div><div class="wcard-text" id="r-comment"></div></div>
+
+  <div class="wcard">
+    <div class="wcard-label">年収アップのための優先スキル</div>
+    <div class="skill-grid" id="r-skills"></div>
+  </div>
+
+  <div class="wcard"><div class="wcard-label">無料アドバイス</div><div class="wcard-text" id="r-tips"></div></div>
 
   <div class="premium-card">
-    <div class="premium-blur">転職で年収を100万円上げるためには、○○業界への転職が最も効果的です。特に△△スキルを持つあなたには、□□系企業が最適で、想定オファー年収は…</div>
-    <div class="premium-overlay">
-      <div class="premium-badge-pill">✦ Premium</div>
-      <div class="premium-title">転職戦略レポートで<br>年収100万UP</div>
-      <div class="premium-desc">狙うべき企業・交渉トーク・スキルアップ計画をAIが具体的に提示</div>
-      <div class="premium-price-display">¥980 <span>/ 買い切り</span></div>
-      <ul class="premium-list">
-        <li>転職すべき業界・企業タイプの特定</li>
+    <div class="premium-top">
+      <div class="wcard-label" style="color:#ffd447;padding-bottom:10px">転職戦略レポート（Premium）</div>
+    </div>
+    <div class="premium-blurred">転職で年収を100万円以上アップするには、まず○○業界への転職が最も効率的です。あなたの△△スキルは現在の市場で希少性が高く、□□系の企業では即戦力として迎えられます。年収交渉では「○○」という表現を使うことで、提示額を15〜20%引き上げることができます。</div>
+    <div class="premium-cta">
+      <div class="p-badge">✦ Premium</div>
+      <div class="p-title">転職で年収100万UP<br>するための戦略レポート</div>
+      <div class="p-desc">狙うべき企業・業界・年収交渉トーク・<br>スキルアップロードマップを提供</div>
+      <div class="p-price">¥980 <span>/ 買い切り</span></div>
+      <ul class="p-list">
+        <li>転職すべき業界・企業タイプ</li>
         <li>年収交渉のトーク例文</li>
-        <li>6ヶ月でスキルアップするロードマップ</li>
-        <li>履歴書・職務経歴書の改善ポイント</li>
+        <li>6ヶ月スキルアップロードマップ</li>
+        <li>職務経歴書の改善ポイント</li>
+        <li>面接での自己PR例文</li>
       </ul>
-      <button class="buy-btn" onclick="openPremium()">転職戦略レポートを見る →</button>
+      <button class="pbuy" onclick="openPremium()">転職戦略レポートを取得する →</button>
     </div>
   </div>
 
-  <button class="share-btn" onclick="shareResult()">📱 査定結果をXでシェアする</button>
-  <span class="retry-link" onclick="resetAll()">← もう一度査定する</span>
+  <div class="action-row">
+    <button class="abtn" onclick="shareX()">𝕏 査定結果をシェア</button>
+    <button class="abtn" onclick="shareLine()">💬 LINEで共有</button>
+  </div>
+  <div class="retry-link" onclick="resetAll()">← もう一度査定する</div>
 </div>
 
 <script>
-const steps = [
-  {
-    q: '現在の<span>職種</span>は？',
-    type: 'select',
-    opts: [
-      {title:'営業・販売',sub:'法人・個人営業、販売員'},
-      {title:'IT・エンジニア',sub:'開発・インフラ・PM'},
-      {title:'マーケ・企画',sub:'マーケター、事業企画'},
-      {title:'管理・事務',sub:'経理・人事・総務・法務'},
-      {title:'医療・介護',sub:'医師・看護師・介護士'},
-      {title:'クリエイティブ',sub:'デザイン・動画・ライター'},
-      {title:'教育・公務員',sub:'教師・公務員・研究職'},
-      {title:'その他',sub:'上記以外の職種'}
-    ]
-  },
-  {
-    q: '現在の<span>年収</span>は？',
-    type: 'select',
-    opts: [
-      {title:'300万円未満',sub:''},{title:'300〜400万円',sub:''},
-      {title:'400〜500万円',sub:''},{title:'500〜600万円',sub:''},
-      {title:'600〜800万円',sub:''},{title:'800万円以上',sub:''}
-    ]
-  },
-  {
-    q: '<span>経験年数</span>は？',
-    type: 'select',
-    opts: [
-      {title:'1年未満',sub:'新卒・第二新卒'},{title:'1〜3年',sub:'若手'},
-      {title:'3〜5年',sub:'中堅'},{title:'5〜10年',sub:'経験豊富'},
-      {title:'10年以上',sub:'ベテラン'},{title:'管理職経験あり',sub:'マネジメント経験'}
-    ]
-  },
-  {
-    q: '一番の<span>強みスキル</span>は？',
-    type: 'select',
-    opts: [
-      {title:'英語・語学',sub:'TOEIC 700+など'},{title:'ITスキル',sub:'プログラミング・DX'},
-      {title:'マネジメント',sub:'チームリード経験'},{title:'専門資格',sub:'国家・業界資格'},
-      {title:'営業実績',sub:'数字で示せる成果'},{title:'データ分析',sub:'Excel・SQL・BI'}
-    ]
-  },
-  {
-    q: '転職を<span>考えているか</span>？',
-    type: 'select',
-    opts: [
-      {title:'積極的に転職したい',sub:'3ヶ月以内に動きたい'},
-      {title:'良い案件があれば',sub:'半年〜1年以内'},
-      {title:'情報収集中',sub:'転職の可能性を探っている'},
-      {title:'転職は考えていない',sub:'現職での年収UPを狙いたい'}
-    ]
-  }
+const STRIPE = 'https://buy.stripe.com/28E00lfptaU1fXd3no18c03';
+
+const steps=[
+  {q:'現在の<span>職種</span>は？',opts:[{t:'営業・販売',s:'法人・個人営業、販売員'},{t:'IT・エンジニア',s:'開発・インフラ・PM・データ'},{t:'マーケ・企画',s:'マーケター、事業企画、PMM'},{t:'管理・バックオフィス',s:'経理・人事・総務・法務'},{t:'医療・福祉',s:'医師・看護師・介護士・薬剤師'},{t:'クリエイティブ',s:'デザイン・動画・ライター'},{t:'教育・公務員',s:'教師・公務員・研究職'},{t:'その他',s:'上記以外の職種'}]},
+  {q:'現在の<span>年収</span>は？',opts:[{t:'300万円未満',s:''},{t:'300〜400万円',s:''},{t:'400〜500万円',s:''},{t:'500〜600万円',s:''},{t:'600〜800万円',s:''},{t:'800万円以上',s:''}]},
+  {q:'<span>経験年数</span>は？',opts:[{t:'1年未満',s:'新卒・第二新卒'},{t:'1〜3年',s:'若手'},{t:'3〜5年',s:'中堅'},{t:'5〜10年',s:'経験豊富'},{t:'10年以上',s:'ベテラン'},{t:'管理職経験あり',s:'マネジメント経験'}]},
+  {q:'一番の<span>強みスキル</span>は？',opts:[{t:'英語・語学',s:'TOEIC700+など'},{t:'ITスキル',s:'プログラミング・DX・AI'},{t:'マネジメント',s:'チームリード経験'},{t:'専門資格',s:'国家・業界資格'},{t:'営業実績',s:'数字で示せる実績'},{t:'データ分析',s:'Excel・SQL・BI・統計'}]},
+  {q:'転職を<span>考えているか</span>？',opts:[{t:'3ヶ月以内に動きたい',s:'積極転職モード'},{t:'良い条件があれば',s:'半年〜1年以内'},{t:'情報収集中',s:'転職の可能性を探っている'},{t:'転職は考えていない',s:'現職での年収UPを希望'}]},
 ];
 
-let cur = 0;
-let ans = {};
+let cur=0,ans={};
 
-function startForm() {
-  document.getElementById('top').style.display = 'none';
+function startForm(){
+  document.getElementById('top').style.display='none';
   document.getElementById('form').classList.add('active');
   renderStep();
 }
 
-function renderStep() {
-  updateDots();
-  const s = steps[cur];
-  let html = `<div class="form-card"><div class="form-q">${s.q}</div><div class="select-grid">`;
-  s.opts.forEach((o, i) => {
-    const sel = ans[cur] === i ? 'selected' : '';
-    html += `<button class="sel-opt ${sel}" onclick="selectOpt(${i})"><div class="sel-opt-title">${o.title}</div>${o.sub ? `<div class="sel-opt-sub">${o.sub}</div>` : ''}</button>`;
+function renderStep(){
+  // step bar
+  let bar='';
+  steps.forEach((_,i)=>{
+    let cls=i<cur?'done':i===cur?'active':'';
+    bar+=`<div class="step-bar-dot ${cls}"></div>`;
   });
-  html += `</div></div>`;
-  html += `<div class="nav-row">`;
-  if (cur > 0) html += `<button class="btn-back" onclick="goBack()">← 戻る</button>`;
-  html += `<button class="btn-next" id="next-btn" onclick="goNext()" ${ans[cur] === undefined ? 'disabled' : ''}>${cur === steps.length - 1 ? '年収を査定する →' : '次へ →'}</button></div>`;
-  document.getElementById('form-body').innerHTML = html;
+  document.getElementById('step-bar').innerHTML=bar;
+
+  const s=steps[cur];
+  let html=`<div class="fq">${String(cur+1).padStart(2,'0')} / ${steps.length}</div><div class="fq-text">${s.q}</div><div class="sgrid">`;
+  s.opts.forEach((o,i)=>{
+    html+=`<button class="sopt${ans[cur]===i?' selected':''}" onclick="pick(${i})"><div class="sopt-t">${o.t}</div>${o.s?`<div class="sopt-s">${o.s}</div>`:''}</button>`;
+  });
+  html+=`</div>`;
+  document.getElementById('form-body').innerHTML=html;
+
+  let nav=`<div class="fnav">`;
+  if(cur>0) nav+=`<button class="fbtn-back" onclick="prev()">← 戻る</button>`;
+  nav+=`<button class="fbtn-next" id="fnb" onclick="fnext()" ${ans[cur]===undefined?'disabled':''}>${cur===steps.length-1?'年収を査定する →':'次へ →'}</button></div>`;
+  document.getElementById('form-body').innerHTML+=nav;
 }
 
-function selectOpt(i) {
-  ans[cur] = i;
-  document.querySelectorAll('.sel-opt').forEach((el, idx) => el.classList.toggle('selected', idx === i));
-  document.getElementById('next-btn').disabled = false;
+function pick(i){
+  ans[cur]=i;
+  document.querySelectorAll('.sopt').forEach((el,j)=>el.classList.toggle('selected',j===i));
+  document.getElementById('fnb').disabled=false;
 }
+function fnext(){if(cur<steps.length-1){cur++;renderStep();}else assess();}
+function prev(){cur--;renderStep();}
 
-function goNext() {
-  if (cur < steps.length - 1) { cur++; renderStep(); }
-  else { runAssessment(); }
-}
-
-function goBack() { cur--; renderStep(); }
-
-function updateDots() {
-  for (let i = 0; i < steps.length; i++) {
-    const d = document.getElementById('dot' + i);
-    d.classList.remove('active', 'done');
-    if (i < cur) d.classList.add('done');
-    if (i === cur) d.classList.add('active');
-  }
-}
-
-async function runAssessment() {
+async function assess(){
   document.getElementById('form').classList.remove('active');
   document.getElementById('loading').classList.add('active');
+  const msgs=['業界データと照合中','経験・スキルを評価中','市場相場を計算中','比較データを分析中','レポートを生成中'];
+  let pct=0,mi=0;
+  const lb=document.getElementById('l-bar'),lm=document.getElementById('l-msg');
+  const iv=setInterval(()=>{pct=Math.min(pct+Math.random()*12,88);lb.style.width=pct+'%';lm.textContent=msgs[mi%msgs.length];mi++;},700);
 
-  const msgs = ['業界データと照合しています', '経験・スキルを評価中', '市場相場を計算中', 'レポートを生成しています'];
-  let mi = 0, pct = 0;
-  const lbar = document.getElementById('l-bar');
-  const lmsg = document.getElementById('l-msg');
-  const interval = setInterval(() => {
-    pct = Math.min(pct + Math.random() * 15, 90);
-    lbar.style.width = pct + '%';
-    mi = (mi + 1) % msgs.length;
-    lmsg.textContent = msgs[mi];
-  }, 700);
+  const jl=['営業・販売','IT・エンジニア','マーケ・企画','管理・バックオフィス','医療・福祉','クリエイティブ','教育・公務員','その他'];
+  const sl=['300万円未満','300〜400万円','400〜500万円','500〜600万円','600〜800万円','800万円以上'];
+  const el=['1年未満','1〜3年','3〜5年','5〜10年','10年以上','管理職経験あり'];
+  const kl=['英語・語学','ITスキル','マネジメント','専門資格','営業実績','データ分析'];
+  const ml=['3ヶ月以内に動きたい','良い条件があれば','情報収集中','転職は考えていない'];
 
-  const jobLabels = ['営業・販売','IT・エンジニア','マーケ・企画','管理・事務','医療・介護','クリエイティブ','教育・公務員','その他'];
-  const salaryLabels = ['300万円未満','300〜400万円','400〜500万円','500〜600万円','600〜800万円','800万円以上'];
-  const expLabels = ['1年未満','1〜3年','3〜5年','5〜10年','10年以上','管理職経験あり'];
-  const skillLabels = ['英語・語学','ITスキル','マネジメント','専門資格','営業実績','データ分析'];
-  const moveLabels = ['積極的に転職したい','良い案件があれば','情報収集中','転職は考えていない'];
+  const prompt=`あなたは日本の転職市場に詳しいキャリアアドバイザーです。以下の情報から適正年収を詳細に査定してください。
 
-  const prompt = `あなたは転職・年収の専門家です。以下の情報から適正年収を査定してください。
+職種: ${jl[ans[0]]}
+現在年収: ${sl[ans[1]]}
+経験年数: ${el[ans[2]]}
+強みスキル: ${kl[ans[3]]}
+転職意向: ${ml[ans[4]]}
 
-職種: ${jobLabels[ans[0]]}
-現在年収: ${salaryLabels[ans[1]]}
-経験年数: ${expLabels[ans[2]]}
-強みスキル: ${skillLabels[ans[3]]}
-転職意向: ${moveLabels[ans[4]]}
-
-以下のJSON形式のみで返してください（\`\`\`json不要）:
+2026年の日本の転職市場データを考慮し、以下のJSON形式のみで返答してください（\`\`\`json不要）:
 {
-  "range": "適正年収レンジ（例：480〜580万円）",
-  "industry_level": "業界水準（例：業界平均520万円）",
-  "strength_point": "強みの評価（20文字以内）",
-  "future_3y": "3年後予測年収（例：+80〜120万円UP）",
-  "transfer_timing": "転職タイミング（例：今が最適）",
-  "comment": "査定コメント（120文字）",
-  "tips": "無料で提供する年収UPヒント（80文字）",
-  "gap_direction": "up or down",
-  "gap_text": "現在との差（例：+50〜150万円の乖離あり）"
+  "range": "適正年収レンジ（例：520〜640万円）",
+  "gap_direction": "up または down",
+  "gap_text": "現在年収との差（例：+80〜180万円の市場乖離あり）",
+  "note": "補足（例：同職種・同経験の上位30%ライン）",
+  "industry_level": "業界平均（例：業界平均 550万円）",
+  "strength_point": "強みの市場評価（25文字以内）",
+  "future_3y": "3年後予測（例：+100〜150万円のアップ余地）",
+  "transfer_timing": "最適な転職タイミング（15文字以内）",
+  "comment": "詳細な査定コメント（150〜180文字、具体的に）",
+  "priority_skills": ["スキル1","スキル2","スキル3","スキル4"],
+  "tips": "今すぐできる年収アップのアドバイス（100文字）"
 }`;
 
-  try {
-    const res = await fetch('/api/diagnose', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ prompt })
-    });
-    const data = await res.json();
-    if (data.error) throw new Error(data.error);
-    const parsed = JSON.parse(data.result.replace(/```json|```/g, '').trim());
-    clearInterval(interval);
-    lbar.style.width = '100%';
-    setTimeout(() => showResult(parsed), 400);
-  } catch(e) {
-    clearInterval(interval);
-    showResult({
-      range: '480〜600万円',
-      industry_level: '業界平均 520万円',
-      strength_point: 'スキルの希少性が高い',
-      future_3y: '+80〜120万円UP見込み',
-      transfer_timing: '今後1年が転機',
-      comment: 'あなたのスキルと経験は市場で十分評価されます。特に強みスキルは需要が高く、転職市場では有利なポジションにいます。適切な企業を選べば年収100万円超のアップも現実的です。',
-      tips: 'まずLinkedInのプロフィールを充実させ、ヘッドハンターからの連絡を受けやすい状態にすることが第一歩です。',
-      gap_direction: 'up',
-      gap_text: '+50〜150万円の乖離あり'
-    });
+  try{
+    const res=await fetch('/api/diagnose',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({prompt})});
+    const data=await res.json();
+    clearInterval(iv);lb.style.width='100%';
+    const d=JSON.parse(data.result.replace(/\`\`\`json|\`\`\`/g,'').trim());
+    setTimeout(()=>showResult(d),400);
+  }catch(e){
+    clearInterval(iv);
+    setTimeout(()=>showResult({range:'480〜600万円',gap_direction:'up',gap_text:'+50〜150万円の市場乖離あり',note:'同職種・同経験の平均ライン',industry_level:'業界平均 520万円',strength_point:'経験・スキルのバランスが良い',future_3y:'+80〜120万円のアップ余地',transfer_timing:'今後1年が転機',comment:'あなたのスキルセットは転職市場で十分評価されます。特に現在の強みスキルは需要が高まっており、適切な企業へ転職することで大幅な年収アップが期待できます。まずは市場調査を始めることをお勧めします。',priority_skills:['英語力強化','DXスキル','マネジメント経験','業界専門資格'],tips:'まずビズリーチなど複数のエージェントに登録し、現在のオファー年収を確認することが最初のステップです。'}),400);
   }
 }
 
-function showResult(d) {
+function showResult(d){
   document.getElementById('loading').classList.remove('active');
   document.getElementById('result').classList.add('active');
-  document.getElementById('r-range').textContent = d.range;
-  document.getElementById('r-current').textContent = '現在年収との比較';
-  const gapEl = document.getElementById('r-gap');
-  gapEl.textContent = d.gap_text;
-  gapEl.className = 'salary-gap ' + (d.gap_direction === 'up' ? 'gap-up' : 'gap-down');
-  document.getElementById('r-industry').textContent = d.industry_level;
-  document.getElementById('r-strength').textContent = d.strength_point;
-  document.getElementById('r-future').textContent = d.future_3y;
-  document.getElementById('r-timing').textContent = d.transfer_timing;
-  document.getElementById('r-comment').textContent = d.comment;
-  document.getElementById('r-tips').textContent = d.tips;
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-  window._salaryResult = d;
+  document.getElementById('r-range').textContent=d.range;
+  const gapEl=document.getElementById('r-gap');
+  gapEl.textContent=d.gap_text;
+  gapEl.className='salary-gap '+(d.gap_direction==='up'?'gap-up':'gap-down');
+  document.getElementById('r-note').textContent=d.note||'';
+  document.getElementById('r-industry').textContent=d.industry_level;
+  document.getElementById('r-strength').textContent=d.strength_point;
+  document.getElementById('r-future').textContent=d.future_3y;
+  document.getElementById('r-timing').textContent=d.transfer_timing;
+  document.getElementById('r-comment').textContent=d.comment;
+  document.getElementById('r-skills').innerHTML=(d.priority_skills||[]).map(s=>`<span class="skill-tag">${s}</span>`).join('');
+  document.getElementById('r-tips').textContent=d.tips;
+  window.scrollTo({top:0,behavior:'smooth'});
+  window._rd=d;
 }
 
-function openPremium() {
-  window.open('https://buy.stripe.com/28E00lfptaU1fXd3no18c03');
+function openPremium(){window.open(STRIPE);}
+
+function shareX(){
+  const d=window._rd||{};
+  const t=`AI年収査定をやってみたら適正年収「${d.range||'？万円'}」と診断された💰\n\n${d.gap_text||''}\n\n無料3分で査定できます↓\nhttps://ai-nenshu.vercel.app\n\n#年収査定 #転職 #AI`;
+  window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(t),'_blank');
 }
 
-function shareResult() {
-  if (!window._salaryResult) return;
-  const d = window._salaryResult;
-  const text = `AI年収査定をやってみたら適正年収「${d.range}」と出た💰\n\n${d.gap_text}\n\n無料で査定できます↓\n[あなたのURL]\n\n#年収 #転職 #AI査定`;
-  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
+function shareLine(){
+  const d=window._rd||{};
+  const t=`AI年収査定で「${d.range||'？万円'}」と診断されました！${d.gap_text||''}\n無料で試せます → https://ai-nenshu.vercel.app`;
+  window.open('https://line.me/R/msg/text/?'+encodeURIComponent(t),'_blank');
 }
 
-function resetAll() {
-  cur = 0; ans = {};
+function resetAll(){
+  cur=0;ans={};
   document.getElementById('result').classList.remove('active');
-  document.getElementById('top').style.display = 'block';
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  document.getElementById('top').style.display='flex';
+  window.scrollTo({top:0,behavior:'smooth'});
 }
 </script>
 </body>
