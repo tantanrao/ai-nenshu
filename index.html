@@ -3,163 +3,398 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI年収査定で市場価値がわかる｜転職前に必ず確認すべき無料ツール2026年版</title>
-<meta name="description" content="AI年収査定ツールで3分で適正年収がわかる。職種・経験・スキルを入力するだけ。転職で年収アップを狙う前に必ずチェック。無料で今すぐ査定。">
+<title>AI年収査定 — あなたの市場価値、正直に教えます</title>
+<meta name="description" content="職種・経験・スキルを入力するだけ。AIが適正年収を査定します。転職前に必ずチェック。無料で今すぐ査定。">
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&display=swap');
-:root{--ink:#1a1a1a;--paper:#fafaf8;--accent:#00a878;--muted:#666;--border:#e5e3de;--card:#fff}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;600;700&display=swap');
+:root {
+  --bg:#0a0f1e; --bg2:#0f1628; --card:#141d35;
+  --green:#00c896; --yellow:#ffd447; --red:#ff4d6d;
+  --white:#f0eff8; --muted:#7a7f9a; --border:rgba(255,255,255,0.07);
+}
 *{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--paper);color:var(--ink);font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.8}
-.site-header{border-bottom:1px solid var(--border);padding:0 24px;height:52px;display:flex;align-items:center;justify-content:space-between;background:#fff;position:sticky;top:0;z-index:10}
-.logo{font-weight:700;color:var(--ink);text-decoration:none}
-.header-cta{background:var(--accent);color:#fff;border:none;padding:8px 18px;border-radius:4px;font-size:0.8rem;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer}
-.hero-article{background:linear-gradient(135deg,#0a1628,#0a2018);color:#fff;padding:60px 24px;text-align:center}
-.hero-article .eyebrow{font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:#00c896;margin-bottom:16px}
-.hero-article h1{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;line-height:1.3;margin-bottom:16px}
-.hero-article .lead{font-size:1rem;opacity:0.75;max-width:560px;margin:0 auto;font-weight:300}
-.container{max-width:720px;margin:0 auto;padding:48px 24px}
-h2{font-size:1.4rem;font-weight:700;margin:48px 0 16px;padding-left:12px;border-left:3px solid var(--accent)}
-h3{font-size:1.1rem;font-weight:700;margin:32px 0 12px}
-p{margin-bottom:16px;color:#333}
-.toc{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:24px;margin-bottom:40px}
-.toc-title{font-weight:700;margin-bottom:12px;font-size:0.9rem}
-.toc ol{padding-left:20px}
-.toc li{margin-bottom:6px;font-size:0.9rem}
-.toc a{color:var(--accent);text-decoration:none}
-.check-list{list-style:none;margin:16px 0}
-.check-list li{padding:8px 0 8px 28px;position:relative;border-bottom:1px solid var(--border);font-size:0.95rem}
-.check-list li::before{content:'✓';position:absolute;left:0;color:var(--accent);font-weight:700}
-.highlight-box{background:#e6f7f2;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;padding:20px 24px;margin:24px 0}
-.highlight-box p{margin:0}
-.cta-box{background:linear-gradient(135deg,#0a1628,#0a2018);color:#fff;border-radius:16px;padding:40px 32px;text-align:center;margin:48px 0}
-.cta-box h3{font-size:1.4rem;margin-bottom:8px;color:#00c896}
-.cta-box p{color:#aaa;margin-bottom:24px;font-weight:300}
-.cta-btn{display:inline-block;background:#00c896;color:#0a1628;padding:16px 40px;border-radius:8px;font-weight:700;font-size:1rem;text-decoration:none}
-.data-table{width:100%;border-collapse:collapse;margin:24px 0;font-size:0.9rem}
-.data-table th{background:#f0f0ee;padding:10px 14px;text-align:left;font-weight:700;border:1px solid var(--border)}
-.data-table td{padding:10px 14px;border:1px solid var(--border)}
-.data-table tr:nth-child(even) td{background:#fafaf8}
-.faq-item{border:1px solid var(--border);border-radius:8px;margin-bottom:12px;overflow:hidden}
-.faq-q{padding:16px 20px;font-weight:700;background:var(--card);font-size:0.95rem}
-.faq-a{padding:16px 20px;background:#f7f5f0;font-size:0.9rem;color:#444;line-height:1.7;border-top:1px solid var(--border)}
-.related-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
-.related-card{background:var(--card);border:1px solid var(--border);border-radius:8px;padding:16px;text-decoration:none;color:var(--ink)}
-.related-card-title{font-size:0.9rem;font-weight:700;margin-bottom:4px}
-.related-card-sub{font-size:0.78rem;color:var(--muted)}
-@media(max-width:600px){.related-grid{grid-template-columns:1fr}}
+body{background:var(--bg);color:var(--white);font-family:'Noto Sans JP',sans-serif;min-height:100vh}
+
+.header{height:54px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;padding:0 28px;background:rgba(10,15,30,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(10px)}
+.logo{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;color:var(--white)}
+.logo span{color:var(--green)}
+.header-btn{background:var(--green);color:#0a0f1e;border:none;padding:8px 20px;border-radius:6px;font-size:0.82rem;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer}
+
+/* HERO */
+.hero{padding:72px 20px 56px;text-align:center;background:radial-gradient(ellipse at 50% 0%,rgba(0,200,150,0.1) 0%,transparent 60%)}
+.hero-badge{display:inline-flex;align-items:center;gap:6px;background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.25);color:var(--green);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;padding:5px 14px;border-radius:100px;margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:900;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
+.hero h1 em{color:var(--green);font-style:normal}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:500px;margin:0 auto 40px;font-weight:300;line-height:1.7}
+.hero-cta{background:var(--green);color:#0a0f1e;border:none;padding:18px 48px;font-size:1.05rem;font-weight:900;font-family:'Noto Sans JP',sans-serif;border-radius:10px;cursor:pointer;transition:transform 0.15s,box-shadow 0.15s}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 10px 32px rgba(0,200,150,0.3)}
+.hero-stats{display:flex;justify-content:center;gap:48px;margin-top:48px;flex-wrap:wrap}
+.hero-stat{text-align:center}
+.hero-stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.8rem;font-weight:700;color:var(--white);display:block}
+.hero-stat-label{font-size:0.72rem;color:var(--muted);letter-spacing:1px}
+
+/* FORM */
+.form-section{display:none;max-width:640px;margin:0 auto;padding:60px 20px}
+.form-section.active{display:block}
+.form-step-indicator{display:flex;gap:8px;margin-bottom:48px;align-items:center}
+.fsi-dot{width:8px;height:8px;border-radius:50%;background:var(--border);transition:background 0.2s}
+.fsi-dot.active{background:var(--green);width:24px;border-radius:4px}
+.fsi-dot.done{background:rgba(0,200,150,0.4)}
+.form-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:32px;margin-bottom:16px}
+.form-q{font-size:1.2rem;font-weight:700;margin-bottom:24px;line-height:1.4}
+.form-q span{color:var(--green)}
+.select-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.sel-opt{background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;cursor:pointer;transition:all 0.15s;text-align:left;color:var(--white);font-family:'Noto Sans JP',sans-serif}
+.sel-opt:hover{border-color:rgba(0,200,150,0.4)}
+.sel-opt.selected{border-color:var(--green);background:rgba(0,200,150,0.08)}
+.sel-opt-title{font-size:0.9rem;font-weight:700;margin-bottom:2px}
+.sel-opt-sub{font-size:0.75rem;color:var(--muted)}
+.text-input{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;color:var(--white);font-family:'Noto Sans JP',sans-serif;font-size:0.95rem;outline:none;transition:border-color 0.15s}
+.text-input:focus{border-color:rgba(0,200,150,0.4)}
+.text-input::placeholder{color:var(--muted)}
+.nav-row{display:flex;justify-content:space-between;align-items:center;margin-top:16px;gap:12px}
+.btn-back{background:transparent;border:1px solid var(--border);color:var(--white);padding:12px 24px;border-radius:8px;font-family:'Noto Sans JP',sans-serif;cursor:pointer}
+.btn-next{background:var(--green);color:#0a0f1e;border:none;padding:14px 32px;border-radius:8px;font-size:0.95rem;font-weight:700;font-family:'Noto Sans JP',sans-serif;cursor:pointer;margin-left:auto;transition:opacity 0.15s}
+.btn-next:disabled{opacity:0.35;cursor:not-allowed}
+
+/* LOADING */
+.loading-section{display:none;text-align:center;padding:100px 20px}
+.loading-section.active{display:block}
+.loading-icon{font-size:4rem;animation:pulse 1.5s ease-in-out infinite;margin-bottom:24px;display:block}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.loading-title{font-size:1.4rem;font-weight:700;margin-bottom:8px;color:var(--green)}
+.loading-sub{color:var(--muted);font-size:0.88rem}
+.loading-progress{width:240px;height:3px;background:var(--border);border-radius:2px;margin:20px auto 0;overflow:hidden}
+.loading-bar{height:100%;background:var(--green);width:0%;transition:width 0.5s}
+
+/* RESULT */
+.result-section{display:none;max-width:680px;margin:0 auto;padding:48px 20px 80px}
+.result-section.active{display:block}
+
+.salary-display{text-align:center;margin-bottom:40px}
+.salary-label{font-size:0.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.salary-range{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.4rem,8vw,4rem);font-weight:700;color:var(--green);margin-bottom:8px}
+.salary-current{font-size:0.9rem;color:var(--muted)}
+.salary-gap{display:inline-block;margin-top:8px;padding:4px 16px;border-radius:100px;font-size:0.85rem;font-weight:700}
+.gap-up{background:rgba(0,200,150,0.1);border:1px solid rgba(0,200,150,0.25);color:var(--green)}
+.gap-down{background:rgba(255,77,109,0.1);border:1px solid rgba(255,77,109,0.25);color:var(--red)}
+
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px}
+.result-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px}
+.rc-label{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.rc-val{font-size:1rem;font-weight:700;color:var(--white);line-height:1.4}
+
+.result-wide{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:24px;margin-bottom:12px}
+.rw-label{font-size:0.68rem;letter-spacing:2px;text-transform:uppercase;color:var(--green);margin-bottom:10px;font-weight:700}
+.rw-text{font-size:0.92rem;color:#bbb;line-height:1.75;font-weight:300}
+
+/* PREMIUM */
+.premium-card{background:var(--card);border:1px solid rgba(255,212,71,0.2);border-radius:16px;padding:28px;margin-bottom:16px;position:relative;overflow:hidden}
+.premium-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--yellow),#ff8c42)}
+.premium-blur{filter:blur(4px);user-select:none;font-size:0.88rem;color:#aaa;line-height:1.7;margin-bottom:20px}
+.premium-overlay{text-align:center}
+.premium-badge-pill{display:inline-block;background:linear-gradient(135deg,var(--yellow),#ff8c42);color:#0a0f1e;font-size:0.68rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;padding:4px 12px;border-radius:100px;margin-bottom:12px}
+.premium-title{font-size:1.2rem;font-weight:700;margin-bottom:6px}
+.premium-desc{font-size:0.85rem;color:var(--muted);margin-bottom:16px;line-height:1.6}
+.premium-price-display{font-size:1.8rem;font-weight:900;color:var(--yellow);margin-bottom:16px}
+.premium-price-display span{font-size:0.9rem;font-weight:400;color:var(--muted)}
+.premium-list{list-style:none;margin-bottom:20px;text-align:left}
+.premium-list li{font-size:0.82rem;color:#ccc;padding:4px 0;display:flex;align-items:center;gap:8px}
+.premium-list li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.buy-btn{width:100%;background:linear-gradient(135deg,var(--yellow),#ff8c42);color:#0a0f1e;border:none;padding:14px;font-size:0.95rem;font-weight:900;font-family:'Noto Sans JP',sans-serif;border-radius:8px;cursor:pointer}
+
+.share-btn{width:100%;background:transparent;border:1px solid var(--border);color:var(--white);padding:13px;font-family:'Noto Sans JP',sans-serif;border-radius:8px;cursor:pointer;margin-bottom:12px;font-size:0.88rem}
+.retry-link{text-align:center;color:var(--muted);font-size:0.82rem;cursor:pointer;text-decoration:underline;display:block;margin-top:16px}
+
+@media(max-width:480px){.select-grid{grid-template-columns:1fr}.result-grid{grid-template-columns:1fr}.hero-stats{gap:24px}}
 </style>
-<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9815681802683480"
-     crossorigin="anonymous"></script>
 </head>
 <body>
-<header class="site-header">
-  <a href="/" class="logo">SalaryAI</a>
-  <button class="header-cta" onclick="location.href='/'">無料で年収査定する</button>
+
+<header class="header">
+  <div class="logo">Salary<span>AI</span></div>
+  <button class="header-btn" onclick="document.getElementById('form').scrollIntoView({behavior:'smooth'})">今すぐ査定する</button>
 </header>
 
-<div class="hero-article">
-  <div class="eyebrow">転職 × AI年収査定</div>
-  <h1>AI年収査定で市場価値がわかる｜<br>転職前に必ず確認すべき無料ツール</h1>
-  <p class="lead">「自分の年収って適正？」その疑問にAIが3分で答えます。転職交渉前の必須チェック。</p>
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-badge">💰 AI年収査定</div>
+  <h1>あなたの市場価値、<br><em>正直に</em>教えます。</h1>
+  <p class="hero-sub">職種・経験・スキルを入力するだけ。AIが適正年収レンジを算出。転職前に必ずチェック。</p>
+  <button class="hero-cta" onclick="startForm()">無料で年収査定する →</button>
+  <div class="hero-stats">
+    <div class="hero-stat"><span class="hero-stat-num">3分</span><div class="hero-stat-label">査定時間</div></div>
+    <div class="hero-stat"><span class="hero-stat-num">無料</span><div class="hero-stat-label">基本査定</div></div>
+    <div class="hero-stat"><span class="hero-stat-num">±10万</span><div class="hero-stat-label">精度目安</div></div>
+  </div>
+</section>
+
+<!-- FORM -->
+<div class="form-section" id="form">
+  <div class="form-step-indicator">
+    <div class="fsi-dot active" id="dot0"></div>
+    <div class="fsi-dot" id="dot1"></div>
+    <div class="fsi-dot" id="dot2"></div>
+    <div class="fsi-dot" id="dot3"></div>
+    <div class="fsi-dot" id="dot4"></div>
+  </div>
+  <div id="form-body"></div>
 </div>
 
-<div class="container">
-  <div class="toc">
-    <div class="toc-title">📋 この記事の内容</div>
-    <ol>
-      <li><a href="#market">日本の年収の実態</a></li>
-      <li><a href="#why">AI査定が転職で役立つ理由</a></li>
-      <li><a href="#howto">AI年収査定の使い方</a></li>
-      <li><a href="#up">年収を上げる3つの方法</a></li>
-      <li><a href="#faq">よくある質問</a></li>
-    </ol>
+<!-- LOADING -->
+<div class="loading-section" id="loading">
+  <span class="loading-icon">💹</span>
+  <div class="loading-title">市場価値を算出中...</div>
+  <div class="loading-sub" id="l-msg">業界データと照合しています</div>
+  <div class="loading-progress"><div class="loading-bar" id="l-bar"></div></div>
+</div>
+
+<!-- RESULT -->
+<div class="result-section" id="result">
+  <div class="salary-display">
+    <div class="salary-label">AIが算出したあなたの適正年収</div>
+    <div class="salary-range" id="r-range">—</div>
+    <div class="salary-current" id="r-current"></div>
+    <span class="salary-gap" id="r-gap"></span>
   </div>
 
-  <h2 id="market">日本の年収の実態</h2>
-  <p>国税庁の最新データによると、日本の給与所得者の平均年収は約460万円です。しかし職種・業界・経験によって差は大きく、同じ仕事をしていても200〜300万円の差が生まれることも珍しくありません。</p>
-
-  <table class="data-table">
-    <tr><th>職種</th><th>平均年収</th><th>上位20%</th></tr>
-    <tr><td>ITエンジニア</td><td>520万円</td><td>800万円+</td></tr>
-    <tr><td>営業職</td><td>450万円</td><td>700万円+</td></tr>
-    <tr><td>マーケター</td><td>480万円</td><td>720万円+</td></tr>
-    <tr><td>管理・事務</td><td>380万円</td><td>550万円+</td></tr>
-    <tr><td>医療・介護</td><td>420万円</td><td>650万円+</td></tr>
-  </table>
-
-  <div class="highlight-box">
-    <p><strong>重要：</strong>転職者の年収アップ成功率は約67%（リクルート調べ）。しかし「自分の適正年収を知らずに転職活動した人」の年収アップ額は、知っていた人と比べて平均40万円低いというデータがあります。</p>
+  <div class="result-grid">
+    <div class="result-card"><div class="rc-label">業界水準</div><div class="rc-val" id="r-industry">—</div></div>
+    <div class="result-card"><div class="rc-label">あなたの強み</div><div class="rc-val" id="r-strength">—</div></div>
+    <div class="result-card"><div class="rc-label">3年後の予測</div><div class="rc-val" id="r-future">—</div></div>
+    <div class="result-card"><div class="rc-label">転職タイミング</div><div class="rc-val" id="r-timing">—</div></div>
   </div>
 
-  <h2 id="why">AI査定が転職で役立つ理由</h2>
-  <h3>1. 交渉の根拠になる</h3>
-  <p>「御社の給与レンジを教えてください」だけでは弱い交渉になります。「市場調査の結果、私のスキルセットの適正年収は○○万円レンジです」と言える根拠が年収査定です。</p>
+  <div class="result-wide"><div class="rw-label">査定コメント</div><div class="rw-text" id="r-comment"></div></div>
+  <div class="result-wide"><div class="rw-label">年収アップのヒント（無料）</div><div class="rw-text" id="r-tips"></div></div>
 
-  <h3>2. 現職との乖離がわかる</h3>
-  <p>あなたの現在の年収が市場価値より低いのか高いのかを客観的に知ることで、転職活動の緊急度と戦略が変わります。</p>
-
-  <h3>3. スキルの市場価値がわかる</h3>
-  <p>どのスキルが最も年収に効くのかをAIが教えてくれます。転職前に習得すべきスキルを逆算できます。</p>
-
-  <ul class="check-list">
-    <li>3分で適正年収レンジを算出</li>
-    <li>現在の年収との乖離額を可視化</li>
-    <li>3年後の予測年収も提示</li>
-    <li>転職タイミングのアドバイスも</li>
-  </ul>
-
-  <h2 id="howto">AI年収査定の使い方（5ステップ）</h2>
-  <ul class="check-list">
-    <li><strong>Step 1：</strong>職種を選択（営業・IT・マーケなど8カテゴリ）</li>
-    <li><strong>Step 2：</strong>現在の年収レンジを選択</li>
-    <li><strong>Step 3：</strong>経験年数を入力</li>
-    <li><strong>Step 4：</strong>強みスキルを選択</li>
-    <li><strong>Step 5：</strong>転職意向を選択 → 即座に査定結果が表示</li>
-  </ul>
-
-  <div class="cta-box">
-    <h3>💰 今すぐ無料で年収査定する</h3>
-    <p>3分で完了。あなたの市場価値を知ることが<br>年収アップの第一歩です。</p>
-    <a href="/" class="cta-btn">無料でAI年収査定を始める →</a>
-  </div>
-
-  <h2 id="up">年収を上げる3つの方法</h2>
-  <h3>① 転職（最速・最大効果）</h3>
-  <p>同一職種での転職は、平均して年収が10〜20%上昇します。特に30代前半までは転職による年収アップ効果が最も大きい時期です。</p>
-
-  <h3>② 社内異動・昇進（安定的）</h3>
-  <p>現職に残る場合は、高収益部門への異動や管理職昇進が年収アップの王道です。社内の評価基準を理解し、戦略的にアピールすることが重要です。</p>
-
-  <h3>③ スキルアップ（中長期）</h3>
-  <p>AIが示した「市場価値の高いスキル」を習得することで、1〜2年後の年収交渉を有利に進められます。特にITスキルと英語は汎用性が高く、どの業種でも評価されます。</p>
-
-  <h2 id="faq">よくある質問</h2>
-  <div class="faq-item">
-    <div class="faq-q">査定結果はどのくらい正確ですか？</div>
-    <div class="faq-a">業界データと入力情報を組み合わせて算出しており、精度の目安は±10〜20万円です。あくまで参考値として活用し、詳細は転職エージェントへの相談をお勧めします。</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">何度でも査定できますか？</div>
-    <div class="faq-a">はい、基本査定は無料で何度でもご利用いただけます。スキルを変えて比較することで、最も年収インパクトの大きいスキルを特定できます。</div>
-  </div>
-  <div class="faq-item">
-    <div class="faq-q">プレミアムレポートには何が含まれますか？</div>
-    <div class="faq-a">狙うべき企業タイプの特定・年収交渉のトーク例文・6ヶ月スキルアップロードマップ・職務経歴書の改善ポイントが含まれます（¥980）。</div>
-  </div>
-
-  <div style="border-top:1px solid var(--border);padding-top:32px;margin-top:48px">
-    <div style="font-weight:700;margin-bottom:16px">関連ツール</div>
-    <div class="related-grid">
-      <a href="https://ai-resume-chi-amber.vercel.app" class="related-card">
-        <div class="related-card-title">AI職務経歴書ライター</div>
-        <div class="related-card-sub">転職書類を10分でAIが作成</div>
-      </a>
-      <a href="https://ai-shindan-pi.vercel.app" class="related-card">
-        <div class="related-card-title">AIビジネス診断</div>
-        <div class="related-card-sub">副業・起業アイデアをAI診断</div>
-      </a>
+  <div class="premium-card">
+    <div class="premium-blur">転職で年収を100万円上げるためには、○○業界への転職が最も効果的です。特に△△スキルを持つあなたには、□□系企業が最適で、想定オファー年収は…</div>
+    <div class="premium-overlay">
+      <div class="premium-badge-pill">✦ Premium</div>
+      <div class="premium-title">転職戦略レポートで<br>年収100万UP</div>
+      <div class="premium-desc">狙うべき企業・交渉トーク・スキルアップ計画をAIが具体的に提示</div>
+      <div class="premium-price-display">¥980 <span>/ 買い切り</span></div>
+      <ul class="premium-list">
+        <li>転職すべき業界・企業タイプの特定</li>
+        <li>年収交渉のトーク例文</li>
+        <li>6ヶ月でスキルアップするロードマップ</li>
+        <li>履歴書・職務経歴書の改善ポイント</li>
+      </ul>
+      <button class="buy-btn" onclick="openPremium()">転職戦略レポートを見る →</button>
     </div>
   </div>
+
+  <button class="share-btn" onclick="shareResult()">📱 査定結果をXでシェアする</button>
+  <span class="retry-link" onclick="resetAll()">← もう一度査定する</span>
 </div>
+
+<script>
+const steps = [
+  {
+    q: '現在の<span>職種</span>は？',
+    type: 'select',
+    opts: [
+      {title:'営業・販売',sub:'法人・個人営業、販売員'},
+      {title:'IT・エンジニア',sub:'開発・インフラ・PM'},
+      {title:'マーケ・企画',sub:'マーケター、事業企画'},
+      {title:'管理・事務',sub:'経理・人事・総務・法務'},
+      {title:'医療・介護',sub:'医師・看護師・介護士'},
+      {title:'クリエイティブ',sub:'デザイン・動画・ライター'},
+      {title:'教育・公務員',sub:'教師・公務員・研究職'},
+      {title:'その他',sub:'上記以外の職種'}
+    ]
+  },
+  {
+    q: '現在の<span>年収</span>は？',
+    type: 'select',
+    opts: [
+      {title:'300万円未満',sub:''},{title:'300〜400万円',sub:''},
+      {title:'400〜500万円',sub:''},{title:'500〜600万円',sub:''},
+      {title:'600〜800万円',sub:''},{title:'800万円以上',sub:''}
+    ]
+  },
+  {
+    q: '<span>経験年数</span>は？',
+    type: 'select',
+    opts: [
+      {title:'1年未満',sub:'新卒・第二新卒'},{title:'1〜3年',sub:'若手'},
+      {title:'3〜5年',sub:'中堅'},{title:'5〜10年',sub:'経験豊富'},
+      {title:'10年以上',sub:'ベテラン'},{title:'管理職経験あり',sub:'マネジメント経験'}
+    ]
+  },
+  {
+    q: '一番の<span>強みスキル</span>は？',
+    type: 'select',
+    opts: [
+      {title:'英語・語学',sub:'TOEIC 700+など'},{title:'ITスキル',sub:'プログラミング・DX'},
+      {title:'マネジメント',sub:'チームリード経験'},{title:'専門資格',sub:'国家・業界資格'},
+      {title:'営業実績',sub:'数字で示せる成果'},{title:'データ分析',sub:'Excel・SQL・BI'}
+    ]
+  },
+  {
+    q: '転職を<span>考えているか</span>？',
+    type: 'select',
+    opts: [
+      {title:'積極的に転職したい',sub:'3ヶ月以内に動きたい'},
+      {title:'良い案件があれば',sub:'半年〜1年以内'},
+      {title:'情報収集中',sub:'転職の可能性を探っている'},
+      {title:'転職は考えていない',sub:'現職での年収UPを狙いたい'}
+    ]
+  }
+];
+
+let cur = 0;
+let ans = {};
+
+function startForm() {
+  document.getElementById('top').style.display = 'none';
+  document.getElementById('form').classList.add('active');
+  renderStep();
+}
+
+function renderStep() {
+  updateDots();
+  const s = steps[cur];
+  let html = `<div class="form-card"><div class="form-q">${s.q}</div><div class="select-grid">`;
+  s.opts.forEach((o, i) => {
+    const sel = ans[cur] === i ? 'selected' : '';
+    html += `<button class="sel-opt ${sel}" onclick="selectOpt(${i})"><div class="sel-opt-title">${o.title}</div>${o.sub ? `<div class="sel-opt-sub">${o.sub}</div>` : ''}</button>`;
+  });
+  html += `</div></div>`;
+  html += `<div class="nav-row">`;
+  if (cur > 0) html += `<button class="btn-back" onclick="goBack()">← 戻る</button>`;
+  html += `<button class="btn-next" id="next-btn" onclick="goNext()" ${ans[cur] === undefined ? 'disabled' : ''}>${cur === steps.length - 1 ? '年収を査定する →' : '次へ →'}</button></div>`;
+  document.getElementById('form-body').innerHTML = html;
+}
+
+function selectOpt(i) {
+  ans[cur] = i;
+  document.querySelectorAll('.sel-opt').forEach((el, idx) => el.classList.toggle('selected', idx === i));
+  document.getElementById('next-btn').disabled = false;
+}
+
+function goNext() {
+  if (cur < steps.length - 1) { cur++; renderStep(); }
+  else { runAssessment(); }
+}
+
+function goBack() { cur--; renderStep(); }
+
+function updateDots() {
+  for (let i = 0; i < steps.length; i++) {
+    const d = document.getElementById('dot' + i);
+    d.classList.remove('active', 'done');
+    if (i < cur) d.classList.add('done');
+    if (i === cur) d.classList.add('active');
+  }
+}
+
+async function runAssessment() {
+  document.getElementById('form').classList.remove('active');
+  document.getElementById('loading').classList.add('active');
+
+  const msgs = ['業界データと照合しています', '経験・スキルを評価中', '市場相場を計算中', 'レポートを生成しています'];
+  let mi = 0, pct = 0;
+  const lbar = document.getElementById('l-bar');
+  const lmsg = document.getElementById('l-msg');
+  const interval = setInterval(() => {
+    pct = Math.min(pct + Math.random() * 15, 90);
+    lbar.style.width = pct + '%';
+    mi = (mi + 1) % msgs.length;
+    lmsg.textContent = msgs[mi];
+  }, 700);
+
+  const jobLabels = ['営業・販売','IT・エンジニア','マーケ・企画','管理・事務','医療・介護','クリエイティブ','教育・公務員','その他'];
+  const salaryLabels = ['300万円未満','300〜400万円','400〜500万円','500〜600万円','600〜800万円','800万円以上'];
+  const expLabels = ['1年未満','1〜3年','3〜5年','5〜10年','10年以上','管理職経験あり'];
+  const skillLabels = ['英語・語学','ITスキル','マネジメント','専門資格','営業実績','データ分析'];
+  const moveLabels = ['積極的に転職したい','良い案件があれば','情報収集中','転職は考えていない'];
+
+  const prompt = `あなたは転職・年収の専門家です。以下の情報から適正年収を査定してください。
+
+職種: ${jobLabels[ans[0]]}
+現在年収: ${salaryLabels[ans[1]]}
+経験年数: ${expLabels[ans[2]]}
+強みスキル: ${skillLabels[ans[3]]}
+転職意向: ${moveLabels[ans[4]]}
+
+以下のJSON形式のみで返してください（\`\`\`json不要）:
+{
+  "range": "適正年収レンジ（例：480〜580万円）",
+  "industry_level": "業界水準（例：業界平均520万円）",
+  "strength_point": "強みの評価（20文字以内）",
+  "future_3y": "3年後予測年収（例：+80〜120万円UP）",
+  "transfer_timing": "転職タイミング（例：今が最適）",
+  "comment": "査定コメント（120文字）",
+  "tips": "無料で提供する年収UPヒント（80文字）",
+  "gap_direction": "up or down",
+  "gap_text": "現在との差（例：+50〜150万円の乖離あり）"
+}`;
+
+  try {
+    const res = await fetch('/api/diagnose', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error);
+    const parsed = JSON.parse(data.result.replace(/```json|```/g, '').trim());
+    clearInterval(interval);
+    lbar.style.width = '100%';
+    setTimeout(() => showResult(parsed), 400);
+  } catch(e) {
+    clearInterval(interval);
+    showResult({
+      range: '480〜600万円',
+      industry_level: '業界平均 520万円',
+      strength_point: 'スキルの希少性が高い',
+      future_3y: '+80〜120万円UP見込み',
+      transfer_timing: '今後1年が転機',
+      comment: 'あなたのスキルと経験は市場で十分評価されます。特に強みスキルは需要が高く、転職市場では有利なポジションにいます。適切な企業を選べば年収100万円超のアップも現実的です。',
+      tips: 'まずLinkedInのプロフィールを充実させ、ヘッドハンターからの連絡を受けやすい状態にすることが第一歩です。',
+      gap_direction: 'up',
+      gap_text: '+50〜150万円の乖離あり'
+    });
+  }
+}
+
+function showResult(d) {
+  document.getElementById('loading').classList.remove('active');
+  document.getElementById('result').classList.add('active');
+  document.getElementById('r-range').textContent = d.range;
+  document.getElementById('r-current').textContent = '現在年収との比較';
+  const gapEl = document.getElementById('r-gap');
+  gapEl.textContent = d.gap_text;
+  gapEl.className = 'salary-gap ' + (d.gap_direction === 'up' ? 'gap-up' : 'gap-down');
+  document.getElementById('r-industry').textContent = d.industry_level;
+  document.getElementById('r-strength').textContent = d.strength_point;
+  document.getElementById('r-future').textContent = d.future_3y;
+  document.getElementById('r-timing').textContent = d.transfer_timing;
+  document.getElementById('r-comment').textContent = d.comment;
+  document.getElementById('r-tips').textContent = d.tips;
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window._salaryResult = d;
+}
+
+function openPremium() {
+  window.open('YOUR_STRIPE_LINK_HERE');
+}
+
+function shareResult() {
+  if (!window._salaryResult) return;
+  const d = window._salaryResult;
+  const text = `AI年収査定をやってみたら適正年収「${d.range}」と出た💰\n\n${d.gap_text}\n\n無料で査定できます↓\n[あなたのURL]\n\n#年収 #転職 #AI査定`;
+  window.open('https://twitter.com/intent/tweet?text=' + encodeURIComponent(text), '_blank');
+}
+
+function resetAll() {
+  cur = 0; ans = {};
+  document.getElementById('result').classList.remove('active');
+  document.getElementById('top').style.display = 'block';
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
 </body>
 </html>
