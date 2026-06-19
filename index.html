@@ -184,6 +184,12 @@ body{background:var(--bg);color:var(--white);font-family:'Noto Sans JP',sans-ser
 
   <div class="wcard"><div class="wcard-label">無料アドバイス</div><div class="wcard-text" id="r-tips"></div></div>
 
+  <div class="action-cta-card" id="r-action-cta" style="display:none;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px;margin-bottom:14px">
+    <div class="wcard-label" id="r-action-label" style="margin-bottom:10px">あなたへのおすすめ</div>
+    <div id="r-action-desc" style="font-size:0.88rem;color:var(--muted);line-height:1.7;margin-bottom:14px"></div>
+    <a id="r-action-btn" class="hero-cta" style="display:inline-block;text-decoration:none;padding:13px 28px;font-size:0.92rem" href="#" target="_blank" rel="noopener sponsored">→</a>
+  </div>
+
   <div class="premium-card">
     <div class="premium-top">
       <div class="wcard-label" style="color:#ffd447;padding-bottom:10px">転職戦略レポート（Premium）</div>
@@ -214,6 +220,63 @@ body{background:var(--bg);color:var(--white);font-family:'Noto Sans JP',sans-ser
 
 <script>
 const STRIPE = 'https://buy.stripe.com/28E00lfptaU1fXd3no18c03';
+
+// ★★★ 年収帯別アフィリエイトCTA設定欄 ★★★
+// 各ASPで提携後、発行されたアフィリエイトURLをそのまま貼り付けてください（未設定の間は非表示になります）
+const CTA_LINKS = {
+  tenshoku: '', // 転職エージェント・転職サイト（リクルートエージェント/doda等、A8.net・リクルートアフィリエイト経由）
+  fukugyo: '',  // 副業・スキルシェア（クラウドワークス/ココナラ等）
+  shisan: ''    // 資産運用・証券口座開設（SBI証券/楽天証券等、A8.net経由）
+};
+
+function parseSalaryMid(rangeText){
+  const nums = (rangeText||'').match(/\d+/g);
+  if(!nums || nums.length===0) return null;
+  const vals = nums.map(Number);
+  return vals.reduce((a,b)=>a+b,0)/vals.length; // 万円単位の中央値
+}
+
+function renderActionCTA(d){
+  const mid = parseSalaryMid(d.range);
+  const box = document.getElementById('r-action-cta');
+  if(mid===null){ box.style.display='none'; return; }
+
+  let tier;
+  if(mid < 300) tier='tenshoku';
+  else if(mid < 500) tier='tenshoku';
+  else if(mid < 800) tier='fukugyo';
+  else tier='shisan';
+
+  const presets = {
+    tenshoku: {
+      label:'💼 今より良い条件の転職を探す',
+      desc:'査定結果の年収レンジはまだ伸びる余地があります。複数の転職エージェントに登録して市場価値を確認するのが最初の一歩です。',
+      btn:'転職エージェントを見る →',
+      url: CTA_LINKS.tenshoku
+    },
+    fukugyo: {
+      label:'💡 今の年収を活かして副業を始める',
+      desc:'この年収帯は本業を活かした副業との相性が良いタイミングです。スキルシェア・業務委託案件で収入の柱を増やすのもおすすめです。',
+      btn:'副業案件を見る →',
+      url: CTA_LINKS.fukugyo
+    },
+    shisan: {
+      label:'📈 増えた収入を資産運用で守り育てる',
+      desc:'この年収帯は資産運用との相性が良いタイミングです。NISA・iDeCoなど税制優遇を活用した運用を検討してみましょう。',
+      btn:'資産運用を見る →',
+      url: CTA_LINKS.shisan
+    }
+  };
+
+  const p = presets[tier];
+  if(!p.url){ box.style.display='none'; return; } // ASP未提携の間は表示しない
+  document.getElementById('r-action-label').textContent = p.label;
+  document.getElementById('r-action-desc').textContent = p.desc;
+  const btn = document.getElementById('r-action-btn');
+  btn.textContent = p.btn;
+  btn.href = p.url;
+  box.style.display='block';
+}
 
 const steps=[
   {q:'現在の<span>職種</span>は？',opts:[{t:'営業・販売',s:'法人・個人営業、販売員'},{t:'IT・エンジニア',s:'開発・インフラ・PM・データ'},{t:'マーケ・企画',s:'マーケター、事業企画、PMM'},{t:'管理・バックオフィス',s:'経理・人事・総務・法務'},{t:'医療・福祉',s:'医師・看護師・介護士・薬剤師'},{t:'クリエイティブ',s:'デザイン・動画・ライター'},{t:'教育・公務員',s:'教師・公務員・研究職'},{t:'その他',s:'上記以外の職種'}]},
@@ -326,6 +389,7 @@ function showResult(d){
   document.getElementById('r-comment').textContent=d.comment;
   document.getElementById('r-skills').innerHTML=(d.priority_skills||[]).map(s=>`<span class="skill-tag">${s}</span>`).join('');
   document.getElementById('r-tips').textContent=d.tips;
+  renderActionCTA(d);
   window.scrollTo({top:0,behavior:'smooth'});
   window._rd=d;
 }
